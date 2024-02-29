@@ -5,6 +5,8 @@ class LocationNotifier extends StateNotifier<LocationData> {
   LocationNotifier(super._state);
 
   final Location _location = Location();
+  
+
 
   Future<void> getLocation() async {
     var service = await _location.serviceEnabled();
