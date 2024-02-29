@@ -37,12 +37,12 @@ class _MyHomePageState extends ConsumerState<MapsPage> {
   ];
   final Map<String, int> _providers = {"Mobilis": 0, "Djezzy": 1, "Ooredoo": 2};
   late Set<Marker> _markers;
-  final LocationData location;
+  // final LocationData location;
   @override
   void initState() {
     super.initState();
     initPlatformState();
-    location = ref.watch(locationProvider);
+    // location = ref.watch(locationProvider);
     initCam();
     _markers = dataPoints.map((dataPoint) {
       return Marker(
@@ -100,11 +100,13 @@ class _MyHomePageState extends ConsumerState<MapsPage> {
               onMapCreated: (controller) {
                 _controller = controller;
               },
-              initialCameraPosition: CameraPosition(
+              initialCameraPosition: const CameraPosition(
                 zoom: 15,
                 target: LatLng(
-                  location.latitude ?? 0,
-                  location.longitude ?? 0,
+                  // location.latitude ?? 0,
+                  0,
+                  // location.longitude ?? 0,
+                  0,
                 ),
               ),
             ),
@@ -134,14 +136,14 @@ class _MyHomePageState extends ConsumerState<MapsPage> {
                           await ref
                               .read(locationProvider.notifier)
                               .getLocation();
-                          _controller.animateCamera(
-                            CameraUpdate.newLatLng(
-                              LatLng(
-                                location.latitude ?? 0,
-                                location.longitude ?? 0,
-                              ),
-                            ),
-                          );
+                          // _controller.animateCamera(
+                          //   CameraUpdate.newLatLng(
+                          //     LatLng(
+                          //       location.latitude ?? 0,
+                          //       location.longitude ?? 0,
+                          //     ),
+                          //   ),
+                          // );
                         },
                         backgroundColor: Colors.white,
                         shape: const CircleBorder(),
